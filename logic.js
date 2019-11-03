@@ -161,7 +161,7 @@ function reset() {
     $('.js-body').on('click', '.js-reset', function () {
         STORE.counter = 0;
         STORE.score = 0;
-        $('.js-body').html('<h1> How much do you know about coffee ?</h1 > ' +
+        $('.js-body').html('<h1> How much do you know about coffee?</h1 > ' +
             '<button class="js-start-quiz">Lets find out!</button>')
     })
 }
