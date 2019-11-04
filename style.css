@@ -61,10 +61,19 @@ input[type="radio"]{
 }
 
 img{
-    /* width:70%; */
-    height:35em;
     margin: 10px auto;
     display: block;
+}
+@media(min-width:720px){
+    img{
+        /* width:70%; */
+        height:35em;
+    }
+}
+@media(max-width:720px){
+    img{
+        width:80%;
+    }
 }
 
 /* button */
