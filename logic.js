@@ -54,7 +54,6 @@ const STORE = {
 //templates
 function renderQuestion() {
     let question = STORE.questions[STORE.counter]
-    console.log('hitting renderQuestion')
     $('.js-body').html('<section class= "header" >' +
         `<h4>${STORE.score} correct | ${STORE.missed} incorrect</h4>` + //grab score
         `<p>Question ${STORE.counter + 1} of 7</p>` + //grab index of question array
@@ -71,10 +70,9 @@ function renderQuestion() {
 //add to score
 function renderFeedback(userAnswer) {
     let trueAnswer = STORE.questions[STORE.counter]['answer']
-    console.log(userAnswer, trueAnswer)
     if (userAnswer == trueAnswer) {
         STORE.counter++;
-        STORE.score += 1
+        STORE.score ++;
         $('.js-body').html(
             '<section class="header">' +
             `<h4>${STORE.score} correct | ${STORE.missed} incorrect</h4>` + //grab score
@@ -107,16 +105,12 @@ function renderFeedback(userAnswer) {
 }
 
 function renderResults() {
-    if(Math.floor(STORE.score) == 99){
-        STORE.score = 100;
-    }
     $('.js-body').html(`<h1> Your Score: ${STORE.score} correct out of 7</h1 ><p>Want to try again?</p><button class="js-reset btn btn-primary">Restart</button>`)
 }
 
 //js-start-quiz
 function start() {
     $('.js-body').on('click', '.js-start-quiz', function () {
-        console.log('start triggered');
         $(renderQuestion);
     })
 }
@@ -124,7 +118,6 @@ function start() {
 // question logic
 function generateOptions(question) {
     console.log('hitting generateOptions')
-    // console.log(question)
     let answerString = "";
     for (let i = 0; i < question.options.length; i++) {
         answerString += '<div class="input-group">' +
@@ -140,7 +133,6 @@ function submit() {
     $('.js-body').on('click', '.js-submit', function () {
         event.preventDefault();
         let answer = $("input[name='answer']:checked").val();
-        console.log('answer:', answer);
         renderFeedback(answer);
     })
 }
@@ -148,7 +140,6 @@ function submit() {
 //next question
 function next() {
     $('.js-body').on('click', '.js-next', function () {
-        console.log('hitting next')
         STORE.counter == 7 ? renderResults() : renderQuestion();
     })
 }
